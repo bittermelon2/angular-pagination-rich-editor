@@ -1,0 +1,59 @@
+<div class="form_input">
+
+    <ul class='input_list'>
+
+        <li><input nz-input placeholder="Your name" [(ngModel)]="inputData.last" /></li>
+
+        <li><input nz-input placeholder="Your Phone" [(ngModel)]="inputData.phone" /></li>
+
+        <li>
+            <nz-radio-group [(ngModel)]="inputData.sex">
+                <label nz-radio nzValue="A">Male</label>
+                <label nz-radio nzValue="B">Female</label>
+            </nz-radio-group>
+
+        </li>
+
+        <li>Hobby:
+            <nz-checkbox-group [(ngModel)]="inputData.checkedOptions" (ngModelChange)="log(checkedOptions)"></nz-checkbox-group>
+        </li>
+
+        <li>Level:
+            <nz-select style="width: 120px;" [(ngModel)]="selectedOption" nzAllowClear nzPlaceHolder="Choose">
+                <nz-option *ngFor="let option of options" [nzLabel]="option.label" [nzValue]="option">
+                    <!-- <nz-option nzValue="jack" nzLabel="Jack" nzDisabled></nz-option>-->
+                </nz-option>
+            </nz-select>
+        </li>
+
+        <li>
+            <nz-date-picker [(ngModel)]="inputData.date" (ngModelChange)="onChange($event)"></nz-date-picker>
+        </li>
+        <li>
+            Image:
+            <input type='file' name='file' accept='image/*' (change)='changeImage($event)' />
+        </li>
+
+        <li>
+            <quill-editor [(ngModel)]="inputData.content"></quill-editor>
+        </li>
+
+        <li>
+            <quill-editor>
+                <div class='ql-toolbar ql-snow'>
+                    <span class='ql-formats'>
+                        <button type='button' class='ql-bold'></button>
+                    </span>
+                    <span class='ql-formats'>
+                        <button type="button" class="ql-italic"></button>
+                    </span>
+
+                </div>
+            </quill-editor>
+        </li>
+    </ul>
+
+
+    <button nz-button nzType="primary" (click)="doSubmit()">Submit</button>
+
+</div>
